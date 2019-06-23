@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+html{
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px;
+}
+
+.wrap{
+  padding-bottom: 0px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bg-sano {
+  background-color: #292d78!important;
+}
+
+.btn-color {
+  background-color: #292d78!important;
+  border: 1px solid #292d78!important;
+}
+.btnColorForm > button {
+  background-color: #292d78!important;
+  border: 1px solid #292d78!important;
+}
+
+.position .ui-multiselect {
+  display: inline-block;
+  position: absolute!important;
+  width: auto;
+  cursor: pointer;
+}

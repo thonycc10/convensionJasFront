@@ -1,0 +1,50 @@
+<div #TABLE>
+  <p-table  selectionMode="single" #dt [columns]="cols" sortField="Codigo" sortOrder="-1" [rowsPerPageOptions]="[10,20,30]" [scrollable]="true" [value]="list" [paginator]="false" [rows]="10">
+  <ng-template pTemplate="caption">
+      <div class="row">
+        <div class="col-md-2 text-left">
+          <button  [disabled]="list?.length == 0" type="button" (click)="exportExcel()" class="btn btn-sm btn-primary">Exportar Excel</button>
+        </div>
+        <div class="col-md-7"></div>
+        <div class="col-md-3">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon-append fa fa-search"></i></span>
+            <input type="text" class="form-control" pInputText placeholder="Buscar" (input)="dt.filterGlobal($event.target.value, 'contains')">
+          </div>
+        </div>
+      </div>
+  </ng-template>
+  <ng-template pTemplate="colgroup" let-columns>
+    <colgroup>
+      <col *ngFor="let col of columns" style="width:100px">
+    </colgroup>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns" [ngSwitch]="col.field">
+        {{col.header}}
+        <p-multiSelect class="position" *ngSwitchCase="'estaca'" [options]="estacas" [displaySelectedLabel]="false" defaultLabel="" [selectedItemsLabel]="'select'" dropdownIcon="pi pi-filter" [panelStyle]="{minWidth:'2em'}" [scrollHeight]="'100px'" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+        <p-multiSelect class="position" *ngSwitchCase="'barrio'" [options]="barrios" [displaySelectedLabel]="false" defaultLabel="" [selectedItemsLabel]="'select'" dropdownIcon="pi pi-filter" [panelStyle]="{minWidth:'2em'}" [scrollHeight]="'100px'" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+        <p-multiSelect class="position" *ngSwitchCase="'distrito'" [options]="distritos" [displaySelectedLabel]="false" defaultLabel="" [selectedItemsLabel]="'select'" dropdownIcon="pi pi-filter" [panelStyle]="{minWidth:'2em'}" [scrollHeight]="'100px'" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+        <p-multiSelect class="position" *ngSwitchCase="'miembro'" [options]="miembro" [displaySelectedLabel]="false" defaultLabel="" [selectedItemsLabel]="'select'" dropdownIcon="pi pi-filter" [panelStyle]="{minWidth:'2em'}" [scrollHeight]="'100px'" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr [pSelectableRow]="rowData">
+      <td *ngFor="let col of columns">
+        {{rowData[col.field]}}
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td [attr.colspan]="cols.length">No se encontro datos.</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    Total de registros {{list?.length}} de participantes.
+  </ng-template>
+</p-table>
+</div>
+
