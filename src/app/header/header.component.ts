@@ -5,5 +5,5 @@ import {Component} from '@angular/core';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {
-    title: string = 'Convención JAS Sano';
+    title: string = 'Convención JAS Coordinación Lima Norte';
 }

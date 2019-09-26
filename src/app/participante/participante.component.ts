@@ -61,10 +61,10 @@ export class ParticipanteComponent implements OnInit {
   }
 
   constructor(
-    private estacaService: EstacaService,
-    private participanteServicio: ParticipanteServicio,
-    private distritoService: DistritoService,
-    private barrioService: BarrioService,
+    public estacaService: EstacaService,
+    public participanteServicio: ParticipanteServicio,
+    public  distritoService: DistritoService,
+    public  barrioService: BarrioService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private spinner: NgxSpinnerService

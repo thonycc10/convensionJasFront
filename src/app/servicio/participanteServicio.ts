@@ -4,11 +4,12 @@ import {Observable, pipe} from 'rxjs';
 import {Participante} from '../model/participante';
 import {map} from 'rxjs/operators';
 import * as moment from 'moment';
+import {URL_BACKEND} from '../config/config';
 
 @Injectable()
 export class ParticipanteServicio {
 
-  private urlEndPonint: string = 'http://localhost:8080/api/participante';
+  private urlEndPonint: string = URL_BACKEND + 'api/participante';
 
  // pasar cabecera
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/josn'});

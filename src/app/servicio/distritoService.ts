@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {URL_BACKEND} from '../config/config';
 
 @Injectable()
 export class DistritoService {
 
-  private urlEndPonint: string = 'http://localhost:8080/api/distrito';
+  private urlEndPonint: string = URL_BACKEND + 'api/distrito';
 
   // pasar cabecera
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/josn'});

@@ -40,10 +40,10 @@ export class ReporteComponent implements OnInit {
     {label: 'Investigador', value: 'Investigador'}
   ];
   constructor(
-    private participanteServicio: ParticipanteServicio,
-    private estacaService: EstacaService,
-    private barrioService: BarrioService,
-    private distritoService: DistritoService,
+    public  participanteServicio: ParticipanteServicio,
+    public  estacaService: EstacaService,
+    public  barrioService: BarrioService,
+    public  distritoService: DistritoService,
     private spinner: NgxSpinnerService,
   public datePipe: DatePipe,
   ) { }

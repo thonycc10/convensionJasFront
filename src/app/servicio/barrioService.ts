@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {URL_BACKEND} from '../config/config';
 
 @Injectable()
 export class BarrioService {
 
-  private urlEndPonint: string = 'http://localhost:8080/api/barrio';
+  // private urlEndPonint: string = 'http://localhost:8080/api/barrio';
+  private urlEndPonint: string = URL_BACKEND + 'api/barrio';
 
   // pasar cabecera
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/josn'});

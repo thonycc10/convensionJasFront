@@ -45,7 +45,6 @@
   <h2><b>Lucas 22:32 </b></h2>
   <h4>Pero yo he rogado por ti, que tu fe no falte; y tú, una vez <span><a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/3.19?lang=spa#18">vuelto</a></span>, <span><a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/108.7?lang=eng#6">fortalece</a></span> a tus hermanos.</h4>
 </div>
-
 <div class="ui-g my-2" *ngIf="viewDistrito">
   <div class="ui-g-12" [@animation]="'visible'">
     <h3>Seleccione a que distrito desea pertenecer </h3>
@@ -59,8 +58,6 @@
     </p-card>
   </div>
 </div>
-
-
 <div class="my-2 ui-g" *ngIf="viewForm">
   <div class="ui-g-12 ui-md-6 ui-md-offset-3">
     <p-panel>
@@ -129,12 +126,12 @@
           <input type="email" class="form-control" id="Correo" [(ngModel)]="participante.correo" name="correo" placeholder="name@example.com">
         </div>
         <div class="form-group">
-          <label for="NReferido">Nombre Referido <i class="pi-question-circle pi" pTooltip="Ingrese el nombre completo de su lider encargado" tooltipPosition="top"></i></label>
-          <input type="text" class="form-control" [(ngModel)]="participante.nombreRef" name="nombreRef"  id="NReferido" placeholder="Nombre Completo Referido">
+          <label for="NReferido">Nombre de un Líder  <i class="pi-question-circle pi" pTooltip="Ingrese el nombre completo de su lider encargado" tooltipPosition="top"></i></label>
+          <input type="text" class="form-control" [(ngModel)]="participante.nombreRef" name="nombreRef"  id="NReferido" placeholder="nombre completo de su lider encargado">
         </div>
         <div class="form-group">
-          <label for="TReferido">Num. Telefono Referido <i class="pi-question-circle pi" pTooltip="Ingrese el número de telefono completo de su lider encargado" tooltipPosition="top"></i></label>
-          <input type="number" class="form-control" [(ngModel)]="participante.telefonoRef" name="telefonoRef" id="TReferido" placeholder="Numero Telefono Referido">
+          <label for="TReferido">Num. Telefono de su Líder <i class="pi-question-circle pi" pTooltip="Ingrese el número de telefono completo de su lider encargado" tooltipPosition="top"></i></label>
+          <input type="number" class="form-control" [(ngModel)]="participante.telefonoRef" name="telefonoRef" id="TReferido" placeholder="Numero Telefono Líder">
         </div>
       </form>
       <p-footer>
