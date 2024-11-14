@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, pipe} from 'rxjs';
 import {Participante} from '../model/participante';
-import {map} from 'rxjs/operators';
 import * as moment from 'moment';
 import {URL_BACKEND} from '../config/config';
 
@@ -23,8 +21,8 @@ export class ParticipanteServicio {
     });
   }
 
-  listDistritosByDocAndEstaca(doc, est) {
-    return this.http.get<any>(this.urlEndPonint + '/' + doc + '/' + est , {
+  listDistritosByDocAndEstaca(doc, est, isGuest) {
+    return this.http.get<any>(this.urlEndPonint + '/districts/' + doc + '/' + est + '/' + isGuest , {
       responseType: 'json',
       observe: 'response'
     });
@@ -40,7 +38,7 @@ export class ParticipanteServicio {
       documento: participante.documento,
       sexo: participante.sexo,
       correo: participante.correo,
-      fechaNacimiento: moment(participante.fechaNacimiento, 'YYYYMMDD').format('YYYY-MM-DD'),
+      fechaNacimiento: participante.fechaNacimiento != null ? moment(participante.fechaNacimiento, 'YYYYMMDD').format('YYYY-MM-DD') : null,
       distrito: {
         id: participante.idDistrito
       },
@@ -49,9 +47,21 @@ export class ParticipanteServicio {
       },
       barrio: {
         id: participante.idBarrio
-      }
+      },
+      priesthood: participante.priesthood,
+      recommendExpires: participante.recommendExpires != null ? moment(participante.recommendExpires, 'YYYYMMDD').format('YYYY-MM-DD') : null,
+      mission: participante.mission,
+      skills: participante.skills,
+      hasRecomend: participante.hasRecomend
     };
     return this.http.post<any>(this.urlEndPonint,  body, {
+      responseType: 'json',
+      observe: 'response'
+    });
+  }
+
+  participants(idEstaca, idBarrio, idDistrito) {
+    return this.http.get<any>(this.urlEndPonint + '/' + idEstaca + '/' + idBarrio + '/' + idDistrito , {
       responseType: 'json',
       observe: 'response'
     });

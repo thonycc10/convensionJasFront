@@ -20,15 +20,18 @@ export class ReporteComponent implements OnInit {
     { field: 'estaca', header: 'Estaca' },
     { field: 'barrio', header: 'Barrio' },
     { field: 'distrito', header: 'Distrito' },
+    { field: 'fechaCreacion', header: 'Fecha Creación' },
     { field: 'documento', header: 'Documento' },
     { field: 'nombre', header: 'Nombre' },
     { field: 'fechaNacimiento', header: 'Fec. Nac.' },
     { field: 'miembro', header: 'Miembro' },
-    { field: 'sexo', header: 'Sexo' },
+    { field: 'sexo', header: 'Genero' },
+    { field: 'priesthood', header: 'Sacerdocio' },
     { field: 'telefono', header: 'Telefono' },
-    { field: 'nombreRef', header: 'Nombre Referido' },
-    { field: 'telefonoRef', header: 'Telefono Referido' },
-    { field: 'fechaCreacion', header: 'Fecha Creación' },
+    { field: 'hasRecomend', header: 'Tiene recomendación' },
+    { field: 'recommendExpires', header: 'Fecha Vencimiento Recomendación' },
+    { field: 'mission', header: 'Mision' },
+    { field: 'skills', header: 'Habilidades' },
   ];
   estacas = [];
   barrios = [];
@@ -36,8 +39,7 @@ export class ReporteComponent implements OnInit {
   miembro = [
     {label: 'Miembro', value: 'Miembro'},
     {label: 'Converso', value: 'Converso'},
-    {label: 'Menos Activo', value: 'Menos Activo'},
-    {label: 'Investigador', value: 'Investigador'}
+    {label: 'Invitado', value: 'Invitado'}
   ];
   constructor(
     public  participanteServicio: ParticipanteServicio,

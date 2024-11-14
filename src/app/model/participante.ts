@@ -1,6 +1,6 @@
 export class Participante {
   id: number;
-  idEstaca: number;
+  idEstaca: number[];
   idBarrio: number;
   idDistrito: number;
   nombre: string;
@@ -13,4 +13,9 @@ export class Participante {
   correo: string;
   fechaNacimiento: string;
   fechaCreacion: string;
+  priesthood: string;
+  recommendExpires: string;
+  mission: string;
+  skills: string;
+  hasRecomend: string;
 }

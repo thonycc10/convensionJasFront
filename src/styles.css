@@ -1,36 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
-html{
-  position: relative;
-  min-height: 100%;
-}
-body {
-  margin-bottom: 60px;
-}
-
-.wrap{
-  padding-bottom: 0px;
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 .bg-sano {
-  background-color: #292d78!important;
+  background-color: #292d78 !important;
 }
 
 .btn-color {
-  background-color: #292d78!important;
-  border: 1px solid #292d78!important;
+  background-color: #292d78 !important;
+  border: 1px solid #292d78 !important;
 }
+
 .btnColorForm > button {
-  background-color: #292d78!important;
-  border: 1px solid #292d78!important;
+  background-color: #292d78 !important;
+  border: 1px solid #292d78 !important;
 }
 
 .position .ui-multiselect {
   display: inline-block;
-  position: absolute!important;
+  position: absolute !important;
   width: auto;
   cursor: pointer;
 }
+
+.fondo {
+  background-image: url('https://jesusmessages.org/wp-content/uploads/2022/08/Comparing-the-Celestial-Heavens-with-the-Natural-Love-Heaven.jpg');
+  background-size: cover; /* O puedes usar 'contain' según lo que prefieras */
+  background-position: center;
+  background-repeat: no-repeat;
+  /*display: flex;*/
+  /*align-items: center; !* Para alinear el contenido centralmente *!*/
+  /*justify-content: center; !* Para alinear el contenido centralmente *!*/
+}
+
+.card-img-left {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-left img {
+  width: 300px;
+  height: auto;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin: 0 0 10px 0;
+}
+
+.card-content p {
+  margin: 0;
+  color: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
+

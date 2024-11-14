@@ -1,6 +1,17 @@
-.footer {
-  position: relative;
-  bottom: 0px;
-  height: 128px;
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  /*position: fixed;*/
+  bottom: 0;
   width: 100%;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+}
+a:hover {
+  text-decoration: underline;
 }

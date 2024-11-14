@@ -6,44 +6,69 @@
   <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
 
-<div class="my-lg-5"  *ngIf="viewIngreso">
-    <div class="row">
-      <div class="col-md-4 col-xs-12 col-sm-6">
-        <iframe width="100%" height="380" src="https://www.youtube.com/embed/0O6dkFuBf7Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="col-md-4 col-xs-12 col-sm-6">
-        <div class="ui-g text-center">
-          <p-card header="Convensión Jas SANO 2019" subheader="Bienvenido" [style]="{width: '360px'}" styleClass="ui-card-shadow">
-            <p-header class="text-center" style="width: 100px">
-              <img src="Card" src="assets/img/poster.jpg" style="width: 100%; height: 150px;">
-            </p-header>
-            <div class="col-md-12">
-              <section>
+<div class="my-lg-5" *ngIf="viewIngreso">
+  <div class="row">
+    <div class="col-md-4 col-xs-12 col-sm-6">
+      <iframe width="100%" height="380"
+              src="https://www.youtube.com/embed/rnUssSp08TI?si=X0Nfh8tfi0M9ZA2T&amp;controls=0"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-4 col-xs-12 col-sm-6">
+      <div class=" text-center">
+        <p-card header="JAS Estaca Independencia" subheader="Bienvenido" [style]="{width: '360px'}"
+                styleClass="ui-card-shadow">
+          <p-header class="text-center" style="width: 100px">
+            <img src="Card" src="assets/img/fondo_jas.jpg" style="width: 100%; height: 150px;">
+          </p-header>
+          <div class="col-md-12">
+            <section>
                 <span class="ui-float-label">
-            <input [(ngModel)]="participante.documento"  class="form-control" id="float-input" type="number" size="30" pInputText>
+            <input [(ngModel)]="participante.documento" class="form-control" id="float-input" type="number" size="30"
+                   pInputText>
             <label for="float-input">Num. Documento</label>
           </span>
-              </section>
-              <br>
-              <section>
-                <p-multiSelect [defaultLabel]="'¿De que estaca es?'" [options]="estacas" [(ngModel)]="participante.idEstaca" [selectionLimit]="1" [panelStyle]="{minWidth:'12em'}"></p-multiSelect>
-              </section>
-            </div>
-            <p *ngIf="existe" style="color: red">*USTED YA ESTA INSCRITO PARA LA CONVENSIÓN*</p>
-            <p-footer>
-              <button pButton type="button" label="Ingresar" [disabled]="!participante.idEstaca || !participante.documento" (click)="ingresar()" class="ui-button-rounded btn-primary btn-color"></button>
-            </p-footer>
-          </p-card>
-        </div>
-      </div>
-      <div class="col-md-4 col-xs-12 col-sm-6">
-        <img src="Card" src="assets/img/sanoColor.png" style="width: 380px">
+            </section>
+            <br>
+            <section class="hidden">
+              <p-multiSelect [defaultLabel]="'¿A qué estaca perteneces?'" [options]="estacas"
+                             [(ngModel)]="participante.idEstaca" [selectionLimit]="1"
+                             [panelStyle]="{minWidth:'12em'}"></p-multiSelect>
+            </section>
+            <br>
+            <section>
+              <select class="form-control" id="idBarrio" [(ngModel)]="participante.idBarrio" name="idBarrio">
+                <option value="undefined" disabled selected="selected">{{ '¿A qué barrio perteneces?' }}</option>
+                <option *ngFor="let con of listBarrios" [value]="con.id">{{ con.nombre }}</option>
+              </select>
+            </section>
+          </div>
+          <p *ngIf="existe" style="color: red">*USTED YA ESTA INSCRITO PARA LA CONVENSIÓN*</p>
+          <p-footer>
+            <button pButton type="button" label="Ingresar"
+                    [disabled]="!participante.idEstaca || !participante.documento" (click)="ingresar()"
+                    class="ui-button-rounded btn-primary btn-color"></button>
+          </p-footer>
+        </p-card>
       </div>
     </div>
+    <div class="col-md-4 col-xs-12 col-sm-6">
+      <img src="Card" src="assets/img/cjas_trans.png" style="width: 380px">
+    </div>
   </div>
+</div>
 <div class="my-lg-5 text-center" *ngIf="viewIngreso">
-  <h2><b>Lucas 22:32 </b></h2>
-  <h4>Pero yo he rogado por ti, que tu fe no falte; y tú, una vez <span><a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/3.19?lang=spa#18">vuelto</a></span>, <span><a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/108.7?lang=eng#6">fortalece</a></span> a tus hermanos.</h4>
+  <div class="card-img-left"><img
+    src="https://zonamormon.wordpress.com/wp-content/uploads/2015/07/elder-russell-m-nelson-lds-190786-wallpaper_zonamormon1.png"
+    alt="Card Image">
+    <div class="card-content">
+      <h2><b><a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/108.7?lang=eng#6">¡Piensen de
+        manera celestial!</a></b></h2>
+      <h4>Por el presidente Russell M. Nelson</h4>
+      <h4>Presidente de La Iglesia de Jesucristo de los Santos de los Últimos Días</h4>
+    </div>
+  </div>
 </div>
 <div class="ui-g my-2" *ngIf="viewDistrito">
   <div class="ui-g-12" [@animation]="'visible'">
@@ -54,7 +79,8 @@
       <p-header class="text-center" style="width: 100px">
         <img src="assets/img/{{col.nombre}}.jpg" alt="{{col.nombre}}" style="width: 100%">
       </p-header>
-      <button pButton type="button" label="Seleccionar" (click)="select(col.id)" class="btn-primary form-control btn-color"></button>
+      <button pButton type="button" label="Seleccionar" (click)="select(col.id)"
+              class="btn-primary form-control btn-color"></button>
     </p-card>
   </div>
 </div>
@@ -63,75 +89,120 @@
     <p-panel>
       <p-header>
         <div class="ui-helper-clearfix">
-          <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:0px">Ingresa tus datos</span>
-          <p-splitButton [disabled]="!ParticipantesForm.form.valid" [style]="{'float':'right'}" styleClass="btnColorForm" label="Guardar" icon="pi pi-check" (onClick)="save()" [model]="items"></p-splitButton>
+          <span class="ui-panel-title"
+                style="font-size:16px;display:inline-block;margin-top:0px">Ingresa tus datos</span>
+          <p-splitButton [disabled]="!ParticipantesForm.form.valid" [style]="{'float':'right'}"
+                         styleClass="btnColorForm" label="Guardar" icon="pi pi-check" (onClick)="save()"
+                         [model]="items"></p-splitButton>
         </div>
       </p-header>
       <form #ParticipantesForm="ngForm">
         <div class="form-group">
           <label for="Estaca">Estaca</label>
           <select class="form-control" id="Estaca" disabled [(ngModel)]="participante.idEstaca" name="idEstaca">
-            <option value="undefined" disabled selected="selected" >{{'Seleccione una estaca'}}</option>
-            <option  *ngFor="let con of estacas" [value]="con.id" >{{con.nombre}}</option>
+            <option value="undefined" disabled selected="selected">{{ 'Seleccione una estaca' }}</option>
+            <option *ngFor="let con of estacas" [value]="con.id">{{ con.nombre }}</option>
           </select>
         </div>
         <div class="form-group">
           <label for="Documento">Num. Documento</label>
-          <input type="number" class="form-control" disabled id="Documento" [(ngModel)]="participante.documento" name="documento" placeholder="Numero Documento">
-        </div>
-        <div class="form-group">
-          <label for="Distrito">Distrito</label>
-          <select class="form-control" id="Distrito" [(ngModel)]="participante.idDistrito" name="idDistrito">
-            <option value="undefined" disabled selected="selected" >{{'Seleccione un distrito'}}</option>
-            <option  *ngFor="let con of listDistritos" [value]="con.id" >{{con.nombre}}</option>
-          </select>
+          <input type="number" class="form-control" disabled id="Documento" [(ngModel)]="participante.documento"
+                 name="documento" placeholder="Numero Documento">
         </div>
         <div class="form-group">
           <label for="Barrio">Barrio</label>
-          <select class="form-control" id="Barrio" [(ngModel)]="participante.idBarrio" name="idBarrio">
-            <option value="undefined" disabled selected="selected" >{{'Seleccione un barrio'}}</option>
-            <option  *ngFor="let con of listBarrios" [value]="con.id" >{{con.nombre}}</option>
+          <select class="form-control" id="Barrio" disabled [(ngModel)]="participante.idBarrio"
+                  (ngModelChange)="viewParticipants($event)" name="idBarrio">
+            <option value="undefined" disabled selected="selected">{{ 'Seleccione un barrio' }}</option>
+            <option *ngFor="let con of listBarrios" [value]="con.id">{{ con.nombre }}</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="miembro">Yo soy... <i class="pi-question-circle pi" pTooltip="Ojo: Si recien esta conociendo la iglesia seleccione: INVESTIGADOR" tooltipPosition="top"></i></label>
-          <select class="form-control" id="miembro" [(ngModel)]="participante.miembro" name="miembro">
-            <option value="Miembro" selected="selected" >Miembro</option>
-            <option value="Converso" >Converso</option>
-            <option value="Menos Activo" >Menos Activo</option>
-            <option value="Investigador" >Investigador</option>
+          <label for="Distrito">Distrito</label>
+          <select class="form-control" id="Distrito" [(ngModel)]="participante.idDistrito"
+                  (ngModelChange)="viewParticipants($event)" name="idDistrito">
+            <option value="undefined" disabled selected="selected">{{ 'Seleccione un distrito' }}</option>
+            <option *ngFor="let con of listDistritos" [value]="con.id">{{ con.nombre }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p-table [value]="listParticipant"
+                   [scrollable]="true"
+                   styleClass="p-datatable-striped p-datatable-gridlines"
+                   scrollHeight="560px">
+            <ng-template pTemplate="body" let-row let-i="rowIndex">
+              <tr style="text-align-last: center;">
+                <td>{{ i + 1 }} - {{ row }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="form-group">
+          <label for="miembro">Yo soy... <i class="pi-question-circle pi"
+                                            pTooltip="Ojo: Si recien esta conociendo la iglesia seleccione: INVESTIGADOR"
+                                            tooltipPosition="top"></i></label>
+          <select (ngModelChange)="enableListDistrict($event)" class="form-control" id="miembro"
+                  [(ngModel)]="participante.miembro" name="miembro">
+            <option value="Miembro" selected="selected">Miembro</option>
+            <option value="Converso">Converso</option>
+            <option value="Invitado">Invitado</option>
           </select>
         </div>
         <div class="form-group">
           <label for="Nombre">Nombre</label>
-          <input type="text" class="form-control" id="Nombre" [(ngModel)]="participante.nombre" name="nombre" placeholder="Nombre Completo">
+          <input type="text" class="form-control" id="Nombre" [(ngModel)]="participante.nombre" name="nombre"
+                 placeholder="Nombre Completo">
         </div>
         <div class="form-group">
-          <label for="sexo">Sexo</label>
-          <select class="form-control" id="sexo" [(ngModel)]="participante.sexo" name="sexo">
-            <option value="M" selected="selected" >Masculino</option>
-            <option value="F" >Femenino</option>
+          <label for="genero">Genero</label>
+          <select class="form-control" id="genero" [(ngModel)]="participante.sexo" name="sexo">
+            <option value="M" selected="selected">Masculino</option>
+            <option value="F">Femenino</option>
           </select>
         </div>
         <div class="form-group">
           <label for="fechaNacimiento">Fecha de nacimiento : </label>
-          <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="1987:2002" [(ngModel)]="participante.fechaNacimiento" [locale]="es" id="fechaNacimiento" name="fechaNacimiento" dateFormat="yy-mm-dd"></p-calendar>
+          <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="1980:2025"
+                      [(ngModel)]="participante.fechaNacimiento" [locale]="es" id="fechaNacimiento"
+                      name="fechaNacimiento" dateFormat="yy-mm-dd"></p-calendar>
+        </div>
+        <div class="form-group" *ngIf="participante.miembro != 'Invitado'">
+          <label for="hasRecomend">¿Tienes una recomendación de templo?</label>
+          <select class="form-control" id="hasRecomend" [(ngModel)]="participante.hasRecomend" name="hasRecomend">
+            <option value="SI">Si</option>
+            <option value="NO" selected="selected">No</option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="participante.hasRecomend == 'SI'">
+          <label for="recommendExpires">Fecha de vencimiento de recomendación : </label>
+          <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="1980:2025"
+                      [(ngModel)]="participante.recommendExpires" [locale]="es" id="recommendExpires"
+                      name="fechaNacimiento" dateFormat="yy-mm-dd"></p-calendar>
         </div>
         <div class="form-group">
           <label for="Telefono">Num. Telefono</label>
-          <input type="number" class="form-control" id="Telefono" [(ngModel)]="participante.telefono" name="telefono" placeholder="Numero Telefono">
+          <input type="number" class="form-control" id="Telefono" [(ngModel)]="participante.telefono" name="telefono"
+                 placeholder="Numero Telefono">
         </div>
         <div class="form-group">
           <label for="Correo">Correo</label>
-          <input type="email" class="form-control" id="Correo" [(ngModel)]="participante.correo" name="correo" placeholder="name@example.com">
+          <input type="email" class="form-control" id="Correo" [(ngModel)]="participante.correo" name="correo"
+                 placeholder="name@example.com">
+        </div>
+        <div class="form-group" *ngIf="participante.sexo == 'M' && participante.miembro != 'Invitado'">
+          <label for="priesthood">Sacerdocio</label>
+          <input type="email" class="form-control" id="priesthood" [(ngModel)]="participante.priesthood"
+                 name="priesthood" placeholder="Escriba su sacerdocio">
+        </div>
+        <div class="form-group" *ngIf="participante.hasRecomend == 'SI' && participante.miembro != 'Invitado'">
+          <label for="mission">¿Que misión hizo?</label>
+          <input type="text" class="form-control" id="mission" [(ngModel)]="participante.mission" name="mission"
+                 placeholder="Escriba su misión">
         </div>
         <div class="form-group">
-          <label for="NReferido">Nombre de un Líder  <i class="pi-question-circle pi" pTooltip="Ingrese el nombre completo de su lider encargado" tooltipPosition="top"></i></label>
-          <input type="text" class="form-control" [(ngModel)]="participante.nombreRef" name="nombreRef"  id="NReferido" placeholder="nombre completo de su lider encargado">
-        </div>
-        <div class="form-group">
-          <label for="TReferido">Num. Telefono de su Líder <i class="pi-question-circle pi" pTooltip="Ingrese el número de telefono completo de su lider encargado" tooltipPosition="top"></i></label>
-          <input type="number" class="form-control" [(ngModel)]="participante.telefonoRef" name="telefonoRef" id="TReferido" placeholder="Numero Telefono Líder">
+          <label for="skills">¿Que habilidades tiene?</label>
+          <textarea class="form-control" id="skills" [(ngModel)]="participante.skills" name="skills"
+                    placeholder="Escribe algo..."></textarea>
         </div>
       </form>
       <p-footer>

@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Participante} from '../model/participante';
 import {EstacaService} from '../servicio/estacaService';
 import {ParticipanteServicio} from '../servicio/participanteServicio';
-import {ActivatedRoute, Router, Routes} from '@angular/router';
 import swal from 'sweetalert2';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {DistritoService} from '../servicio/distritoService';
 import {BarrioService} from '../servicio/barrioService';
-import * as moment from 'moment'
 import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
@@ -37,17 +35,15 @@ import {NgxSpinnerService} from 'ngx-spinner';
 export class ParticipanteComponent implements OnInit {
   participante: Participante;
   estacas: any[];
+  barrio: any[];
   existe: boolean = false;
   viewIngreso: boolean = true;
-
   listDistritos: any[];
   listBarrios: any[];
   viewDistrito: boolean = false;
-
   viewForm: boolean = false;
-
   items: any[];
-  value: Date;
+  listParticipant: any[];
 
   es = {
     firstDayOfWeek: 1,
@@ -65,15 +61,17 @@ export class ParticipanteComponent implements OnInit {
     public participanteServicio: ParticipanteServicio,
     public  distritoService: DistritoService,
     public  barrioService: BarrioService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
     private spinner: NgxSpinnerService
   ) {
     this.participante = new Participante();
+    this.participante.idEstaca = [];
   }
 
   ngOnInit() {
+    this.limpiar();
+    this.participante.idEstaca.push(1);
     this.listEstacas();
+    this.barrioByEstaca(1);
     this.items = [
       {label: 'Limpiar', icon: 'pi pi-refresh', command: () => {
           this.limpiar();
@@ -100,13 +98,26 @@ export class ParticipanteComponent implements OnInit {
     });
   }
 
+  viewParticipants(event: any) {
+    this.participanteServicio.participants(this.participante.idEstaca[0], this.participante.idBarrio, this.participante.idDistrito).subscribe(response => {
+      this.listParticipant = response.body.participants;
+      console.log(this.listParticipant);
+    });
+  }
+
   limpiar() {
     this.participante.correo = '';
     this.participante.telefonoRef = undefined;
     this.participante.telefono = undefined;
     this.participante.nombre = '';
     this.participante.idBarrio = undefined;
-    this.participante.correo = '';
+    this.participante.fechaNacimiento = null;
+    this.participante.hasRecomend = null;
+    this.participante.mission = null;
+    this.participante.recommendExpires = null;
+    this.participante.skills = null;
+    this.participante.priesthood = null;
+    this.listParticipant = [];
     this.participante.nombreRef = '';
   }
 
@@ -121,13 +132,13 @@ export class ParticipanteComponent implements OnInit {
   // distritos
   select(idDistrito) {
     this.spinner.show();
-    this.distritoService.validarCupo(idDistrito, this.participante.idEstaca[0]).subscribe(response => {
+    this.distritoService.validarCupo(idDistrito, this.participante.idBarrio).subscribe(response => {
       if (response.body.status == '') {
         this.viewIngreso = false;
         this.viewDistrito = false;
         this.viewForm = true;
         this.participante.idDistrito = idDistrito;
-        this.barrioByEstaca(this.participante.idEstaca[0]);
+        // this.barrioByEstaca(this.participante.idEstaca[0]);
         this.spinner.hide();
       } else {
         this.spinner.hide();
@@ -143,20 +154,7 @@ export class ParticipanteComponent implements OnInit {
      return  swal('Advertencia', 'LLene los datos', 'error');
     }
     this.spinner.show();
-    this.participanteServicio.listDistritosByDocAndEstaca(this.participante.documento, this.participante.idEstaca[0]).subscribe(response => {
-      if (response.body.mensaje == 'NO EXISTE') {
-       this.listDistritos = response.body.distritos;
-        this.viewIngreso = false;
-        this.viewDistrito = true;
-        this.viewForm = false;
-        this.spinner.hide();
-      } else {
-        this.existe = true;
-        this.viewDistrito = false;
-        this.viewForm = false;
-        this.spinner.hide();
-      }
-    });
+    this.listDistrits(0);
   }
 
   listEstacas() {
@@ -170,4 +168,31 @@ export class ParticipanteComponent implements OnInit {
       this.spinner.hide();
     });
   }
+
+  enableListDistrict(event: any) {
+    const isGuest =  event == 'Invitado' ? 1 : 0;
+    this.listParticipant = [];
+    this.participanteServicio.listDistritosByDocAndEstaca(this.participante.documento, this.participante.idBarrio, isGuest).subscribe(response => {
+      this.listDistritos = response.body.distritos;
+    });
+  }
+
+  listDistrits(isGuest: number) {
+    this.participanteServicio.listDistritosByDocAndEstaca(this.participante.documento, this.participante.idBarrio, isGuest).subscribe(response => {
+      if (response.body.mensaje == 'NO EXISTE') {
+        this.listDistritos = response.body.distritos;
+        this.viewIngreso = false;
+        this.viewDistrito = true;
+        this.viewForm = false;
+        this.spinner.hide();
+      } else {
+        this.existe = true;
+        this.viewDistrito = false;
+        this.viewForm = false;
+        this.spinner.hide();
+      }
+    });
+  }
+
+
 }
