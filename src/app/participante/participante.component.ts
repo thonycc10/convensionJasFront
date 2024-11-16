@@ -88,6 +88,7 @@ export class ParticipanteComponent implements OnInit {
         this.viewIngreso = true;
         this.viewDistrito = false;
         this.viewForm = false;
+        this.limpiar();
         this.spinner.hide();
         return  swal('Exito', 'Hola  ' + response.body.cliente.nombre + ' bienvenido a la convensión, registro concluido', 'success');
       } else {
@@ -110,7 +111,9 @@ export class ParticipanteComponent implements OnInit {
     this.participante.telefonoRef = undefined;
     this.participante.telefono = undefined;
     this.participante.nombre = '';
-    this.participante.idBarrio = undefined;
+    // this.participante.idBarrio = undefined;
+    this.participante.sexo = undefined;
+    this.participante.miembro = undefined;
     this.participante.fechaNacimiento = null;
     this.participante.hasRecomend = null;
     this.participante.mission = null;

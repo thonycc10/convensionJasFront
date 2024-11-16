@@ -51,16 +51,7 @@ export class ReporteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.spinner.show();
-    this.participanteServicio.list().subscribe(response => {
-      this.list = response.body;
-      this.list.forEach(o => {
-        o.estaca = o.estaca.nombre;
-        o.distrito = o.distrito.nombre;
-        o.barrio = o.barrio.nombre;
-      });
-      this.spinner.hide();
-    });
+
     this.listFiltros();
   }
 
@@ -99,4 +90,21 @@ export class ReporteComponent implements OnInit {
     this.spinner.hide();
   }
 
+  codeList(event: string) {
+    console.log(event);
+    if (event === 'JAS2024IND') {
+      this.spinner.show();
+      this.participanteServicio.list().subscribe(response => {
+        this.list = response.body;
+        this.list.forEach(o => {
+          o.estaca = o.estaca.nombre;
+          o.distrito = o.distrito.nombre;
+          o.barrio = o.barrio.nombre;
+        });
+        this.spinner.hide();
+      });
+    } else {
+      this.list = [];
+    }
+  }
 }

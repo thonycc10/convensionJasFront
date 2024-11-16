@@ -22,7 +22,7 @@
 .fondo {
   background-image: url('https://jesusmessages.org/wp-content/uploads/2022/08/Comparing-the-Celestial-Heavens-with-the-Natural-Love-Heaven.jpg');
   background-size: cover; /* O puedes usar 'contain' según lo que prefieras */
-  background-position: center;
+  /*background-position: center;*/
   background-repeat: no-repeat;
   /*display: flex;*/
   /*align-items: center; !* Para alinear el contenido centralmente *!*/
@@ -36,6 +36,13 @@
   border-radius: 8px;
   overflow: hidden;
   width: 100%;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-img-border {
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   margin: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

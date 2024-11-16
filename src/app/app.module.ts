@@ -29,7 +29,7 @@ import {NgxSpinnerModule, NgxSpinnerService} from 'ngx-spinner';
 const routes: Routes = [
   {path: '', redirectTo: '/jas', pathMatch: 'full'},
   {path: 'jas', component: ParticipanteComponent},
-  {path: 'jas/participates', component: ReporteComponent}
+  {path: 'jas/participantes', component: ReporteComponent}
 ];
 
 

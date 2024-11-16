@@ -59,10 +59,11 @@
   </div>
 </div>
 <div class="my-lg-5 text-center" *ngIf="viewIngreso">
-  <div class="card-img-left"><img
-    src="https://zonamormon.wordpress.com/wp-content/uploads/2015/07/elder-russell-m-nelson-lds-190786-wallpaper_zonamormon1.png"
-    alt="Card Image">
-    <div class="card-content">
+  <div class="row card-img-border">
+    <div class="col-md-4 col-xs-12 col-sm-6">
+      <img src="https://zonamormon.wordpress.com/wp-content/uploads/2015/07/elder-russell-m-nelson-lds-190786-wallpaper_zonamormon1.png" width="100%" alt="Card Image">
+    </div>
+    <div class="col-md-8 col-xs-12 col-sm-6">
       <h2><b><a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/108.7?lang=eng#6">¡Piensen de
         manera celestial!</a></b></h2>
       <h4>Por el presidente Russell M. Nelson</h4>
@@ -175,7 +176,7 @@
         </div>
         <div class="form-group" *ngIf="participante.hasRecomend == 'SI'">
           <label for="recommendExpires">Fecha de vencimiento de recomendación : </label>
-          <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="1980:2025"
+          <p-calendar [monthNavigator]="true" [yearNavigator]="true" yearRange="2024:2027 "
                       [(ngModel)]="participante.recommendExpires" [locale]="es" id="recommendExpires"
                       name="fechaNacimiento" dateFormat="yy-mm-dd"></p-calendar>
         </div>
